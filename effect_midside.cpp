@@ -36,7 +36,7 @@ void AudioEffectMidSide::update(void)
 		if (blockb) release(blockb); // of the blocks is NULL then it's trouble anyway
 		return;
 	}
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 	uint32_t a12, a34, b12, b34;
 	uint32_t *pa = (uint32_t *)(blocka->data);
 	uint32_t *pb = (uint32_t *)(blockb->data);

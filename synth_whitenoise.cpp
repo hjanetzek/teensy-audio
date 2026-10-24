@@ -45,7 +45,7 @@ void AudioSynthNoiseWhite::update(void)
 	end = p + AUDIO_BLOCK_SAMPLES/2;
 	lo = seed;
 	do {
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 		uint32_t val1, val2;
 		
 		hi = multiply_16bx16t(16807, lo); // 16807 * (lo >> 16)

@@ -31,7 +31,7 @@
 
 
 // 140312 - PAH - slightly faster copy
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 static void copy_to_fft_buffer(void *destination, const void *source)
 {
 	const uint16_t *src = (const uint16_t *)source;
@@ -64,7 +64,7 @@ void AudioAnalyzeFFT1024::update(void)
 	block = receiveReadOnly();
 	if (!block) return;
 
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 	switch (state) {
 	case 0:
 		blocklist[0] = block;

@@ -46,7 +46,7 @@
 // no audible difference.
 //#define IMPROVE_EXPONENTIAL_ACCURACY
 
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 
 void AudioFilterStateVariable::update_fixed(const int16_t *in,
 	int16_t *lp, int16_t *bp, int16_t *hp)

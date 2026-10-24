@@ -28,7 +28,7 @@
 #include "filter_biquad.h"
 #include "utility/dspinst.h"
 
-#if defined(__ARM_ARCH_7EM__)
+#if (defined(__ARM_ARCH_7EM__) || defined(TEENSY_AUDIO_GENERIC_DSP))
 
 void AudioFilterBiquad::update(void)
 {
